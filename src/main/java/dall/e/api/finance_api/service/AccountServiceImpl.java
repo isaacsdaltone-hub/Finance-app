@@ -80,6 +80,15 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public List<AccountDto> getAllActiveAccounts() {
+        log.info("Fetching all active accounts");
+        return accountRepository.findAllActiveAccounts()
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     @CacheEvict(value = "accounts", key = "#id")
     public AccountDto updateAccount(Long id, AccountDto accountDTO) {
         log.info("Updating account with ID: {}", id);

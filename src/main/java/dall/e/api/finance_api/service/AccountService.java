@@ -21,6 +21,9 @@ public interface AccountService {
     // Retrieve all accounts
     List<AccountDto> getAllAccounts();
 
+    // Retrieve all active accounts
+    List<AccountDto> getAllActiveAccounts();
+
     // Update an existing account by ID using a DTO
     AccountDto updateAccount(Long accountId, AccountDto accountDto);
 
