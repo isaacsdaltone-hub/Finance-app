@@ -46,6 +46,13 @@ public class AccountController {
         return ResponseEntity.ok(accounts);
     }
 
+    @GetMapping("/active")
+    public ResponseEntity<List<AccountDto>> getAllActiveAccounts() {
+        log.info("Fetching all active accounts");
+        List<AccountDto> accounts = accountService.getAllActiveAccounts();
+        return ResponseEntity.ok(accounts);
+    }
+
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<AccountDto>> getAccountsByUserId(@PathVariable Long userId) {
         log.info("Fetching accounts for user ID: {}", userId);

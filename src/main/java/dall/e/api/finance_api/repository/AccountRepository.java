@@ -14,4 +14,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     
     @Query("SELECT a FROM Account a WHERE a.user.userId = ?1 AND a.deletedAt IS NULL")
     List<Account> findActiveAccountsByUserId(Long userId);
+
+    @Query("SELECT a FROM Account a WHERE a.isActive = true AND a.deletedAt IS NULL")
+    List<Account> findAllActiveAccounts();
 }
